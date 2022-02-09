@@ -1,7 +1,7 @@
-streamlit=1.5.0=pypi_0
-altair=4.2.0=pypi_0
-quantstats=0.0.45=pypi_0
-seaborn=0.10.1=pypi_0
-yfinance=0.1.66=pypi_0
-pandas=1.2.4=py38hd77b12b_0
-numpy=1.20.1=py38h34a8a5c_0
+streamlit==1.5.0
+altair==4.2.0
+quantstats==0.0.45
+seaborn==0.10.1
+yfinance==0.1.66
+pandas==1.2.4
+numpy==1.20.1
