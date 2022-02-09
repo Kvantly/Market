@@ -15,8 +15,7 @@ import seaborn as sns
 import yfinance as yf
 import datetime 
 import matplotlib.pyplot as plt
-#import talib 
-#import ta
+
 import numpy as np
 import pandas as pd
 yf.pdr_override()
@@ -31,7 +30,7 @@ st.sidebar.header('User Input Parameters')
 ###########
 # sidebar #
 ###########
-option = st.sidebar.selectbox('Select one symbol', ( 'SPY', 'QQQ',"GLD",'OBXD.OL','TLT'))
+option = st.sidebar.selectbox('Select one symbol', ( 'SPY', 'QQQ',"GLD",'OBXD.OL','TLT', 'SPLV'))
 
 today = datetime.date.today()
 before = today - datetime.timedelta(days=1000)
@@ -115,21 +114,14 @@ st.write('Yearly returns')
 st.bar_chart(Mon['EOY'])
 
 
+def make_pretty(styler):
+    styler.background_gradient(axis=None, vmin=-30, vmax=30, cmap="RdYlGn")
+    return styler
 
+Mon = Mon.style.pipe(make_pretty)
 
-
-st.set_option('deprecation.showPyplotGlobalUse', False)
 if st.sidebar.checkbox("Monthly Heatmap"):
-    fig, ax = plt.subplots(figsize=(10,10))  
-    st.write(sns.heatmap(Mon, cmap="RdYlGn",annot=True, fmt='.1f', linewidths=.5,))
-  
-    st.pyplot()
-
-
-
-
-
-
+    st.dataframe(Mon,)
 
 
 
