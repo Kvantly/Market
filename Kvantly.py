@@ -74,7 +74,7 @@ data = yf.download(option,start= start_date,end= end_date, progress=False)
 data['SMA Fast'] = data['Adj Close'].rolling(Fast_sma).mean()
 data['SMA Slow'] = data['Adj Close'].rolling(Slow_sma).mean()
 
-st.sidebar.metric('Sentiment', value=indy['pct'].iloc[-1] , delta_color="normal")
+st.sidebar.metric('Sentiment', value=indy[f'{option}'] , delta_color="normal")
 
 
 
