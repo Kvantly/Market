@@ -74,12 +74,14 @@ data = yf.download(option,start= start_date,end= end_date, progress=False)
 data['SMA Fast'] = data['Adj Close'].rolling(Fast_sma).mean()
 data['SMA Slow'] = data['Adj Close'].rolling(Slow_sma).mean()
 
-st.sidebar.metric('Sentiment', value=indy[f'{option}'].iloc[-1] , delta_color="normal")
+
 
 
 
 st.line_chart(data[['Adj Close','SMA Slow','SMA Fast']])
 
+sentiment = (data['SMA Slow'].iloc[-1] - data['Adj Close'].iloc[-1]) \ data['Adj Close'].iloc[-1]
+st.sidebar.metric('Sentiment', sentiment , delta_color="normal")
 
 r = pd.DataFrame(index=indy.index)
 r['pct']  = indy['pct']
