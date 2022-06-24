@@ -71,8 +71,9 @@ indy['pct']         = indy['Adj Close'].pct_change()
 st.area_chart(indy[f'{option}'], width=0, height=0, use_container_width=True)
 
 data = yf.download(option,start= start_date,end= end_date, progress=False)
-data['SMA Fast'] = data['Adj Close'].rolling(Fast_sma).mean()
-data['SMA Slow'] = data['Adj Close'].rolling(Slow_sma).mean()
+data['SMA Fast']   = data['Adj Close'].rolling(Fast_sma).mean()
+data['SMA Slow']   = data['Adj Close'].rolling(Slow_sma).mean()
+data['Sentiment']  = (data['SMA Slow'] - data[['Adj Close'])/ data[['Adj Close']
 
 
 
@@ -80,7 +81,7 @@ data['SMA Slow'] = data['Adj Close'].rolling(Slow_sma).mean()
 
 st.line_chart(data[['Adj Close','SMA Slow','SMA Fast']])
 
-sentiment = ( (data['SMA Slow'].iloc[-1] - data['Adj Close'].iloc[-1]) \ data['Adj Close'].iloc[-1])
+sentiment = data['Sentiment'].iloc[-1]
 st.sidebar.metric('Sentiment', sentiment , delta_color="normal")
 
 r = pd.DataFrame(index=indy.index)
