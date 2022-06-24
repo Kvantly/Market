@@ -80,7 +80,7 @@ data['SMA Slow'] = data['Adj Close'].rolling(Slow_sma).mean()
 
 st.line_chart(data[['Adj Close','SMA Slow','SMA Fast']])
 
-sentiment = (data['SMA Slow'].iloc[-1] - data['Adj Close'].iloc[-1]) \ data['Adj Close'].iloc[-1]
+sentiment = ( (data['SMA Slow'].iloc[-1] - data['Adj Close'].iloc[-1]) \ data['Adj Close'].iloc[-1])
 st.sidebar.metric('Sentiment', sentiment , delta_color="normal")
 
 r = pd.DataFrame(index=indy.index)
