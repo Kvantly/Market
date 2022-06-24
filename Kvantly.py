@@ -81,7 +81,7 @@ data['SMA Slow']   = data['Adj Close'].rolling(Slow_sma).mean()
 
 st.line_chart(data[['Adj Close','SMA Slow','SMA Fast']])
 
-data['Sentiment']  = ((data['SMA Slow'] - data['Adj Close'])/ data[['Adj Close'])
+data['Sentiment']  = ((data['SMA Slow'] - data['Adj Close'])/ data['Adj Close'])
 
 sentiment = data['Sentiment'].iloc[-1]
 st.sidebar.metric('Sentiment', sentiment , delta_color="normal")
