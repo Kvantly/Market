@@ -33,7 +33,7 @@ st.sidebar.header('User Input Parameters')
 option = st.sidebar.selectbox('Select one symbol', ( 'SPY', 'QQQ',"GLD",'OBXD.OL','TLT', 'SPLV'))
 
 today = datetime.date.today()
-before = today - datetime.timedelta(days=3000)
+before = today - datetime.timedelta(days=1000)
 start_date = st.sidebar.date_input('Start date', before)
 end_date = st.sidebar.date_input('End date', today)
 if start_date < end_date:
