@@ -84,7 +84,7 @@ st.line_chart(data[['Adj Close','SMA Slow','SMA Fast']])
 data['Sentiment']  = ((data['Adj Close'] - data['SMA Slow'])/ data['SMA Slow'])*100
 
 sentiment = data['Sentiment'].iloc[-1]
-sentiment = sentiment.round(2)
+
 st.sidebar.metric('Sentiment', sentiment , delta_color="normal")
 
 r = pd.DataFrame(index=indy.index)
