@@ -33,7 +33,7 @@ st.sidebar.header('User Input Parameters')
 option = st.sidebar.selectbox('Select one symbol', ( 'SPY', 'QQQ',"GLD",'OBXD.OL','TLT', 'SPLV'))
 
 today = datetime.date.today()
-before = today - datetime.timedelta(days=1000)
+before = today - datetime.timedelta(days=3000)
 start_date = st.sidebar.date_input('Start date', before)
 end_date = st.sidebar.date_input('End date', today)
 if start_date < end_date:
@@ -73,6 +73,8 @@ st.area_chart(indy[f'{option}'], width=0, height=0, use_container_width=True)
 data = yf.download(option,start= start_date,end= end_date, progress=False)
 data['SMA Fast'] = data['Adj Close'].rolling(Fast_sma).mean()
 data['SMA Slow'] = data['Adj Close'].rolling(Slow_sma).mean()
+
+st.sidebar.metric('Sentiment', value=indy['pct'].iloc[-1] , delta_color="normal")
 
 
 
