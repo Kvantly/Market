@@ -152,7 +152,7 @@ ind['DBMF Momentum']     = (ind['DBMF']-ind['DBMF_SMA'])/ind['DBMF_SMA']
 
 
 
-st.line_chart(ind[['SPY Momentum','QQQ Momentum','GLD Momentum','OBX Momentum']], width=0, height=0, use_container_width=True)
+st.line_chart(ind[['SPY Momentum','QQQ Momentum','GLD Momentum','OBX Momentum','DBMF Momentum']], width=0, height=0, use_container_width=True)
 
 # Data of recent days
 st.write('Recent data')
