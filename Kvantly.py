@@ -30,7 +30,7 @@ st.sidebar.header('User Input Parameters')
 ###########
 # sidebar #
 ###########
-option = st.sidebar.selectbox('Select one symbol', ( 'SPY', 'QQQ',"GLD",'OBXD.OL','TLT', 'SPLV'))
+option = st.sidebar.selectbox('Select one symbol', ( 'SPY', 'QQQ',"GLD",'OBXD.OL','TLT', 'SPLV','DBMF', ))
 
 today = datetime.date.today()
 before = today - datetime.timedelta(days=1000)
