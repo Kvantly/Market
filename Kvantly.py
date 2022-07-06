@@ -135,18 +135,20 @@ if st.sidebar.checkbox("Monthly Heatmap"):
 
 
 
-ticks = ['SPY','QQQ','GLD','OBXD.OL']
+ticks = ['SPY','QQQ','GLD','OBXD.OL','DBMF',]
 ind = yf.download(ticks,start= start_date,end= end_date,)['Adj Close']
 
 ind.bfill(inplace=True)
 ind['SPY_SMA']          = ind['SPY'].rolling(Slow_sma).mean()
 ind['GLD_SMA']          = ind['GLD'].rolling(Slow_sma).mean()
 ind['QQQ_SMA']          = ind['QQQ'].rolling(Slow_sma).mean()
+ind['DBMF_SMA']          = ind['DBMF'].rolling(Slow_sma).mean()
 ind['OBXD.OL_SMA']      = ind['OBXD.OL'].rolling(Slow_sma).mean()
 ind['SPY Momentum']     = (ind['SPY']-ind['SPY_SMA'])/ind['SPY_SMA'] 
 ind['QQQ Momentum']     = (ind['QQQ']-ind['QQQ_SMA'])/ind['QQQ_SMA']
 ind['GLD Momentum']     = (ind['GLD']-ind['GLD_SMA'])/ind['GLD_SMA']  
-ind['OBX Momentum']     = (ind['OBXD.OL']-ind['OBXD.OL_SMA'])/ind['OBXD.OL_SMA'] 
+ind['OBX Momentum']     = (ind['OBXD.OL']-ind['OBXD.OL_SMA'])/ind['OBXD.OL_SMA']
+ind['DBMF Momentum']     = (ind['DBMF']-ind['DBMF_SMA'])/ind['DBMF_SMA']  
 
 
 
